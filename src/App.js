@@ -2,17 +2,15 @@ import { NavBar } from './Components/NavBar';
 import { ItemCounter } from './Components/counter/ItemCounter';
 import { ItemListContainer } from './Components/Item/ItemListContainer';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { ItemDetailContainer } from './Components/detail/ItemDetailContainer';
 
 function App() {
-  return (    
+  return (
     <>
-    <NavBar/>
-    <ItemListContainer/>
-    <ItemCounter
-      stock={10}
-      initial={2}
-    />
-    </>    
+      <NavBar />
+      <ItemListContainer />    
+      <ItemDetailContainer />
+    </>
   );
 }
 

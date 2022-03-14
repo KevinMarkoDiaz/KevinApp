@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../Spinner/Loader';
-import { ItemList } from './ItemList'
+import { ItemDetail } from './ItemDetail'
 import { storeInventoryPromise } from '../../Mock/Mock'
 
-export const ItemListContainer = () => {
+export const ItemDetailContainer = () => {
 
   useEffect(() => {
     res();
@@ -21,7 +21,7 @@ export const ItemListContainer = () => {
   const res = async () => {
     try {
       const data = await storeInventoryPromise;
-      handleStates( data );
+      handleStates( data[0] );
     } catch ( error ) {
       console.log( error );
     }
@@ -32,7 +32,7 @@ export const ItemListContainer = () => {
       {
         load
           ? <Loader />
-          : <ItemList catalog={ catalog } />
+          : <ItemDetail product={ catalog } />
       }
     </>
   )

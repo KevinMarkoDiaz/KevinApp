@@ -1,0 +1,12 @@
+.detail-container-data{
+  width: 70%;
+  border: none;  
+  display: flex;
+  justify-content: space-between;
+}
+.detail-container-data-content{
+  display: flex;  
+  align-items: flex-start;
+  color: rgb(133, 133, 133);
+  font-size: 0.9rem;
+}
