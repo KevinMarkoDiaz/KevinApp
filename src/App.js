@@ -1,6 +1,6 @@
 import { NavBar } from './Components/NavBar';
-import { ItemListContainer } from './Components/ItemListContainer';
 import { ItemCounter } from './Components/counter/ItemCounter';
+import { ItemListContainer } from './Components/Item/ItemListContainer';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
