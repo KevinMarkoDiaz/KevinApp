@@ -18,6 +18,7 @@ export const ItemDetailContainer = () => {
     setLoad( false );
   }
 
+
   const res = async () => {
     try {
       const data = await storeInventoryPromise;
