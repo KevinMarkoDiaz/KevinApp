@@ -16,13 +16,19 @@ export const ItemListContainer = () => {
   const [catalog, setCatalog] = useState( initialState );
   const [load, setLoad] = useState( true );
 
-  const handleStates = ( data ) => {
-    setCatalog( data )
+  const handleStates = ( filteredCategory, data ) => {
+    
+    (filteredCategory < 1 )
+      ?    setCatalog( data ) 
+      :    setCatalog( filteredCategory );     
+
     setLoad( false );
-  }
+  };
+
+
   const filterCategory = (data)=>{    
-    const filteredCategory = data.filter( item => item.category === category);
-    handleStates( filteredCategory );
+    const filteredCategory = data.filter( item => item.category === category);    
+    handleStates( filteredCategory, data );
   };
 
   const res = async () => {

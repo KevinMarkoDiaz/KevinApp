@@ -18,7 +18,7 @@ export const NavBar = () => {
               <Nav.Link href="#home">
                 <CartWidget />
               </Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item >
                   <Link to="/categories/items" className='link-navbar'>Articulos</Link>
                 </NavDropdown.Item>

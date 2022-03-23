@@ -1,10 +1,11 @@
 import React from 'react'
-import { FaCanadianMapleLeaf } from "react-icons/fa";
+import { GiColombia } from "react-icons/gi";
+import './NavBar.css';
 
 export const CartWidget = () => {
   return (
     <>
-      <FaCanadianMapleLeaf/> 
+      <GiColombia className='icon-size'/> 
     </>
   )
 }

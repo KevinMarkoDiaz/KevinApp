@@ -4,10 +4,12 @@ import { ItemCounter } from '../counter/ItemCounter';
 import './ItemDetail.css'
 
 export const ItemDetail = ({ product }) => {
+  console.log(product)
   const { title, price, pictureUrl, stock, description } = product;
+  
   return (
     <>
-      <Container className='d-flex shadow'>
+      <Container className='d-flex shadow min-height'>
         <Card className='card-item'>
           <Card.Img variant="top" src={pictureUrl} />
           <Card.Body>

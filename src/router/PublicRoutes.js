@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { ItemDetailContainer } from "../Components/detail/ItemDetailContainer";
 import { Home } from "../Components/home/Home";
 import { ItemListContainer } from "../Components/Item/ItemListContainer";
 import { Layout } from "../Components/layout/Layout";
@@ -13,8 +14,9 @@ export const PublicRoutes = () => {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/categories/:category" element={<ItemListContainer />} />       
           <Route path="/" element={<Home />} />
+          <Route path="/categories/:category" element={<ItemListContainer />} />       
+          <Route path="/item/:itemId" element={<ItemDetailContainer />} />       
         </Routes>
       </Layout>
     </Router>
