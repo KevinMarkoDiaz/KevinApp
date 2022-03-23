@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Card, Container, ListGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import { ItemCounter } from '../counter/ItemCounter';
 import './ItemDetail.css'
 
 export const ItemDetail = ({ product }) => {
-  console.log(product)
+
+  const initialState = null;
+  const [confirmCant, setConfirmCant] = useState(initialState);
+
+  const onAdd = (cantSelect) => {
+    setConfirmCant(cantSelect)
+  };
+
   const { title, price, pictureUrl, stock, description } = product;
-  
+
   return (
     <>
       <Container className='d-flex shadow min-height'>
@@ -17,7 +25,11 @@ export const ItemDetail = ({ product }) => {
             <Card.Text>
               Precio: {price}$
             </Card.Text>
-            <Button variant="success">Comprar</Button>
+            <Link
+              to="/cart"
+            >
+              <Button variant="success">Comprar</Button>
+            </Link>
           </Card.Body>
         </Card>
         <Card className='m-3 detail-container-data'>
@@ -28,10 +40,9 @@ export const ItemDetail = ({ product }) => {
           <ListGroup variant="flush">
             <ListGroup.Item className='detail-container-data-content p-4'>{description}</ListGroup.Item>
           </ListGroup>
-          <ItemCounter
-            stock={10}
-            initial={2}
-          />
+          {
+            (confirmCant === null || confirmCant === 0) && <ItemCounter stock={5} initial={1} onAdd={onAdd} />
+          }
         </Card>
       </Container>
     </>

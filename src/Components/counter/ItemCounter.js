@@ -2,24 +2,27 @@ import React, { useState } from 'react'
 import { Button, Card, Stack } from 'react-bootstrap'
 import './ItemCounter.css'
 
-export const ItemCounter = ({itemName, stock, initial}) => {
+export const ItemCounter = ({ itemName, stock, initial, onAdd }) => {
 
   const initialState = 0;
   const [counter, setCounter] = useState(initialState);
 
   const handleAdd = () => {
-    (stock > initial && counter < stock ) && setCounter(counter + initial || 1);
+    (stock > initial && counter < stock) && setCounter(counter + initial || 1);
   };
 
   const handleSubstract = () => {
-    (counter > 1 ) && setCounter(counter - initial || 1);    
+    (counter > 1) && setCounter(counter - initial || 1);
   };
+  const handleConfirm = () => {
+    onAdd(counter)
+  }
 
   return (
     <>
       <Card className="card-counter">
         <Card.Body>
-          <Card.Title>{itemName || "Item"}</Card.Title>          
+          <Card.Title>{itemName || "Item"}</Card.Title>
           <Stack direction="horizontal" gap={3}>
             <Card.Text>
               Value:
@@ -34,6 +37,9 @@ export const ItemCounter = ({itemName, stock, initial}) => {
               <Button variant="danger" onClick={handleSubstract}>-{initial || 1}</Button>
             </div>
           </Stack>
+          <div className='pt-3'>
+            <Button variant="success" onClick={handleConfirm}>Confirmar</Button>
+          </div>
         </Card.Body>
       </Card>
     </>
