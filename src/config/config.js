@@ -1,0 +1,2 @@
+export const SHIPPING_PRICE = 900;
+export const DISCOUNT_MESSAGE = 'El descuento se aplica al precio total de los productos y varia según la cantidad de productos, si la cantidad está entre 3 y 5 unidades el descuento es del 5% y si la cantidad supera los 5 productos se aplica un descuento de 10%'

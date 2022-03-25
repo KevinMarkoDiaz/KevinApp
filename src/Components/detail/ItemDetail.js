@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Card, Container, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import { context } from '../../Context/ContextProvider';
 import { ItemCounter } from '../counter/ItemCounter';
 import './ItemDetail.css'
 
 export const ItemDetail = ({ product }) => {
 
+
+
   const initialState = null;
   const [confirmCant, setConfirmCant] = useState(initialState);
+
+  const { handleAddItem } = useContext(context);
 
   const onAdd = (cantSelect) => {
     setConfirmCant(cantSelect)
   };
 
-  const { title, price, pictureUrl, stock, description } = product;
+  const { title, price, pictureUrl, stock, description, id } = product;
 
   return (
     <>
@@ -28,7 +33,14 @@ export const ItemDetail = ({ product }) => {
             <Link
               to="/cart"
             >
-              <Button variant="success">Comprar</Button>
+              <Button 
+              variant="success"
+              onClick={
+                ()=>{handleAddItem(id, product, confirmCant)}
+              }
+              >
+                Agregar al carrito
+              </Button>
             </Link>
           </Card.Body>
         </Card>
