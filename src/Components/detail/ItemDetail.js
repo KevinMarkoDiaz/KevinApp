@@ -7,8 +7,6 @@ import './ItemDetail.css'
 
 export const ItemDetail = ({ product }) => {
 
-
-
   const initialState = null;
   const [confirmCant, setConfirmCant] = useState(initialState);
 
@@ -30,18 +28,23 @@ export const ItemDetail = ({ product }) => {
             <Card.Text>
               Precio: {price}$
             </Card.Text>
-            <Link
-              to="/cart"
-            >
-              <Button 
-              variant="success"
-              onClick={
-                ()=>{handleAddItem(id, product, confirmCant)}
-              }
+            {
+              (confirmCant !== null && confirmCant !== 0)
+              && <Link
+                to="/cart"
               >
-                Agregar al carrito
-              </Button>
-            </Link>
+                <Button
+                  variant="success"
+                  onClick={
+                    () => {
+                      handleAddItem(id, product, confirmCant)
+                    }
+                  }
+                >
+                  Agregar al carrito
+                </Button>
+              </Link>
+            }
           </Card.Body>
         </Card>
         <Card className='m-3 detail-container-data'>

@@ -16,7 +16,7 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">
-                <CartWidget />
+              
               </Nav.Link>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item >
@@ -31,6 +31,7 @@ export const NavBar = () => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <CartWidget />
         </Container>
       </Navbar>
     </>

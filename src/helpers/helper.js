@@ -1,12 +1,8 @@
-export const accumulateProducts = (data, prop) => {
-  const cantProduct = data.map(d => d[prop]).reduce((a, v) => a + v, 0);
-  return cantProduct;
-};
-
-export const handleRestTotalPrice = (id, data, setState, state) => {
+export const handleRestTotal = (id, data, setState, state, setTotalUn, totalUn) => {
   const [deleteProduct] = data.filter(item => item.id === id);
   const restTotal = deleteProduct.cant * deleteProduct.price;  
   setState(state - restTotal)
+  setTotalUn(totalUn - deleteProduct.cant)
 };
 
 export const handleNewStateCart = (id, data, setState) => {
@@ -14,7 +10,7 @@ export const handleNewStateCart = (id, data, setState) => {
   setState(newCartValue);
 };
 
-export const handleAddItemState = (id, item, addCant, cart, setTotal, total, setCart, isInCart) =>{
+export const handleAddItemState = (id, item, addCant, cart, setTotal, total, setCart, isInCart, setTotalUn, totalUn) =>{
   const totalPrice = item.price * addCant
 
   if (isInCart(item)) {
@@ -28,6 +24,7 @@ export const handleAddItemState = (id, item, addCant, cart, setTotal, total, set
     setCart([...cart, item])
   }
   setTotal(total + totalPrice);
+  setTotalUn(totalUn + addCant );
 }
 
 export const handleTotalShipping = (cant, shippingPrice)=>{
@@ -53,7 +50,5 @@ export const handleDiscount = ( cant, total )=>{
 };
 
 export const handleTotalBill = (priceProducts, priceShipping, discount )=>{
-
   return (priceProducts + priceShipping) - discount;
-
 };

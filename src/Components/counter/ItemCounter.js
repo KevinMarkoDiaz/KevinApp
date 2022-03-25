@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, {  useState } from 'react'
 import { Button, Card, Stack } from 'react-bootstrap'
-import { context } from '../../Context/ContextProvider';
 import './ItemCounter.css'
 
 export const ItemCounter = ({ itemName, stock, initial, onAdd }) => {
