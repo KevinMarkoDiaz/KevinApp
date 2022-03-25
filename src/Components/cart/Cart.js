@@ -3,8 +3,8 @@ import { Button } from 'react-bootstrap';
 import { context } from '../../Context/ContextProvider';
 import { CartdItem } from './CartdItem';
 import { accumulateProducts, handleDiscount, handleTotalBill, handleTotalShipping } from '../../helpers/helper';
-import { SHIPPING_PRICE, DISCOUNT_MESSAGE } from '../../config/config';
-import {ModalComponent} from '../modal/ModalComponent'
+import { SHIPPING_PRICE, DISCOUNT_MESSAGE, SHIPPING_MESSAGE } from '../../config/config';
+import { ModalComponent } from '../modal/ModalComponent'
 import './Cart.css';
 
 export const Cart = () => {
@@ -15,7 +15,7 @@ export const Cart = () => {
     handleDeleteItem,
     total
   } = useContext(context);
-  
+
   const cantProduct = accumulateProducts(cart, "cant")
   const shipping = handleTotalShipping(cantProduct, SHIPPING_PRICE);
   const discount = handleDiscount(cantProduct, total);
@@ -32,8 +32,6 @@ export const Cart = () => {
           />)
         }
       </div>
-
-      
       <div className='cart-container-detail-list shadow'>
         <div className='cart-container-detail-list-title shadow'>
           <h6>Resumen de compra</h6>
@@ -47,7 +45,7 @@ export const Cart = () => {
               <p>Precio de productos: </p> <p>{total}$</p>
             </div>
             <div className='d-flex justify-content-between'>
-              <p>Envio: </p> <p>{ shipping}$</p>
+              <p>Envio: </p> <p>{shipping}$</p>
             </div>
             <div className='d-flex justify-content-between'>
               <p>Descuento: </p> <p>{discount}$</p>
@@ -55,7 +53,7 @@ export const Cart = () => {
           </div>
           <div className='cart-container-detail-list-total'>
             <div className='d-flex justify-content-between'>
-              <p>Total: </p><p>{ totalBill}$</p>
+              <p>Total: </p><p>{totalBill}$</p>
             </div>
           </div>
         </div>
@@ -65,12 +63,17 @@ export const Cart = () => {
         >
           Borrar todos los productos
         </Button>
-        <div  className='cart-container-detail-side-info'>
-          <div>
-            <ModalComponent/>
-          <p>{DISCOUNT_MESSAGE}</p>
+        <div className='cart-container-detail-side-info'>
+          <div className='d-flex justify-content-between'>
+            <ModalComponent
+              title='Descuento'
+              message={DISCOUNT_MESSAGE}
+            />
+            <ModalComponent
+              title='Envio'
+              message={SHIPPING_MESSAGE}
+            />
           </div>
-
         </div>
       </div>
     </div>

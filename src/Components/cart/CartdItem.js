@@ -3,7 +3,7 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import './Cart.css'
 
-export const CartdItem = ({ product, handleDeleteItem, handleAddTotalPrice }) => {
+export const CartdItem = ({ product, handleDeleteItem }) => {
 
   const {
     cant,
