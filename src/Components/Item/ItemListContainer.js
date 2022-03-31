@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../Spinner/Loader';
 import { ItemList } from './ItemList'
-import { storeInventoryPromise } from '../../Mock/Mock'
 import { useParams } from 'react-router-dom';
-
+import { getFirestoreData } from '../../services/services';
+ 
 export const ItemListContainer = () => {
 
   const {category} = useParams();
 
-  useEffect(() => {
-    res();
+  useEffect(async() => {
+  const firestoreData =  await getFirestoreData();
+  filterCategory(firestoreData)
   }, [category])
 
   const initialState = null;
@@ -21,23 +22,12 @@ export const ItemListContainer = () => {
     (filteredCategory < 1 )
       ?    setCatalog( data ) 
       :    setCatalog( filteredCategory );     
-
     setLoad( false );
   };
-
 
   const filterCategory = (data)=>{    
     const filteredCategory = data.filter( item => item.category === category);    
     handleStates( filteredCategory, data );
-  };
-
-  const res = async () => {
-    try {
-      const data = await storeInventoryPromise;      
-      filterCategory(data);      
-    } catch ( error ) {
-      console.log( error );
-    }
   };
 
   return (

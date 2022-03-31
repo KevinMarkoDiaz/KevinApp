@@ -4,7 +4,6 @@ import { Item } from './Item'
 import './ItemList.css'
 
 export const ItemList = ({ catalog }) => {
-
   return (
     <>
       <Container>
