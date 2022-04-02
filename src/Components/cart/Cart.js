@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { context } from '../../Context/ContextProvider';
 import { CartdItem } from './CartdItem';
 import { handleDiscount, handleTotalBill, handleTotalShipping } from '../../helpers/helper';
@@ -8,6 +9,7 @@ import { ModalComponent } from '../modal/ModalComponent'
 import { FcAddRow } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import './Cart.css';
+import { db } from '../../firebase/firebase';
 
 export const Cart = () => {
 
@@ -18,6 +20,26 @@ export const Cart = () => {
     total,
     totalUn
   } = useContext(context);
+
+  const handleBuy = async() => {
+
+    const orderDetails = {
+      buyer : {
+        name: "",
+        phoneNumber: "",
+        email: ""
+      },
+      items : cart,
+      date: serverTimestamp(),
+      total: total
+    }
+
+    const storeCollection = collection(db, "Orders");
+    const order = await addDoc(storeCollection, orderDetails)
+
+    console.log(order)
+
+  };
 
   const shipping = handleTotalShipping(totalUn, SHIPPING_PRICE);
   const discount = handleDiscount(totalUn, total);
@@ -72,6 +94,14 @@ export const Cart = () => {
           </div>
         </div>
         <Button
+          className='m-1'
+          variant="success"
+          onClick={handleBuy}
+        >
+          Terminar compra
+        </Button>
+        <Button
+          className='m-1'
           variant="danger"
           onClick={handleClearCart}
         >
