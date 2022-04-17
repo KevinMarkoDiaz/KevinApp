@@ -10,15 +10,15 @@ export const CartWidget = () => {
 
   return (
     <>
-      {
-        (totalUn != 0) &&
-        <div className='d-flex'>
+      <div className='d-flex'>
         <Link to='/cart' >
           <AiOutlineShoppingCart className='icon-size' />
         </Link>
+        {
+          (totalUn != 0) &&
           <p className='cart-widget-cant'>{totalUn}</p>
-        </div>
-      }
+        }
+      </div>
     </>
   )
 }

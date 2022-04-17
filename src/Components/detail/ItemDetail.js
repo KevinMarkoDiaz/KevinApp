@@ -16,15 +16,23 @@ export const ItemDetail = ({ product }) => {
     setConfirmCant(cantSelect)
   };
 
-  const { title, price, pictureUrl, stock, description, id } = product;
+  const {
+    title,
+    price,
+    pictureUrl,
+    stock,
+    description,
+    id
+  } = product;
 
   return (
     <>
-      <Container className='d-flex shadow min-height'>
-        <Card className='card-item'>
+      <Container className='container-detail shadow min-height'>
+        <Card className='card-item shadow'>
           <Card.Img variant="top" src={pictureUrl} />
           <Card.Body>
-            <Card.Title>{title}</Card.Title>
+            <Card.Title
+            >{title}</Card.Title>
             <Card.Text>
               Precio: {price}$
             </Card.Text>
@@ -53,11 +61,18 @@ export const ItemDetail = ({ product }) => {
             <h6>Stock:{stock}</h6>
           </Card.Header>
           <ListGroup variant="flush">
-            <ListGroup.Item className='detail-container-data-content p-4'>{description}</ListGroup.Item>
+            <ListGroup.Item className='detail-container-data-content p-4'>
+              {description}
+              {
+                (confirmCant === null || confirmCant === 0)
+                && <ItemCounter
+                  stock={5}
+                  initial={1}
+                  onAdd={onAdd}
+                />
+              }
+            </ListGroup.Item>
           </ListGroup>
-          {
-            (confirmCant === null || confirmCant === 0) && <ItemCounter stock={5} initial={1} onAdd={onAdd} />
-          }
         </Card>
       </Container>
     </>

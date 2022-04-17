@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../Spinner/Loader';
-import { ItemList } from './ItemList'
+import { ItemList } from './ItemList';
 import { useParams } from 'react-router-dom';
 import { getFirestoreData } from '../../services/services';
+import './ItemList.css';
 
 export const ItemListContainer = () => {
 
@@ -17,20 +18,18 @@ export const ItemListContainer = () => {
   const [catalog, setCatalog] = useState(initialState);
   const [load, setLoad] = useState(true);
 
-  const handleStates = ( data) => {
-
+  const handleStates = (data) => {
     setCatalog(data)
-
     setLoad(false);
   };
 
   return (
-    <>
+    <div className="container-item-list-banner">
       {
         load
           ? <Loader />
           : <ItemList catalog={catalog} />
       }
-    </>
+    </div>
   )
 }

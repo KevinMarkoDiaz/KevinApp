@@ -2,7 +2,6 @@ import React from 'react';
 import { BsInstagram, BsFacebook, BsTwitter } from 'react-icons/bs';
 import { FaCopyright } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
 import './Footer.css';
 
 export const Footer = () => {

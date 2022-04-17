@@ -8,10 +8,10 @@ export const ItemDetailContainer = () => {
 
   const { itemId } = useParams();
 
-  useEffect(async() => {
-    const firestoreData =  await getFirestoreDataId(itemId);
+  useEffect(async () => {
+    const firestoreData = await getFirestoreDataId(itemId);
     handleStates(firestoreData)
-    }, [itemId])
+  }, [itemId])
 
   const initialState = null;
   const [catalog, setCatalog] = useState(initialState);
@@ -21,7 +21,6 @@ export const ItemDetailContainer = () => {
     setCatalog(data)
     setLoad(false);
   }
-
 
   return (
     <>

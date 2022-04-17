@@ -1,0 +1,119 @@
+.formA{
+    height: 65%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sale-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.container-form-confirm{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.form-containerA {
+    width: 80%;
+    height:100% ;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    justify-content: space-between;
+}
+
+.cart-container-detail-listb{
+    width:40%;
+    margin: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.cart-container-detail-list-title{
+    background-color: rgb(9, 0, 94);
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    padding: 0rem 0.5rem;
+    margin-bottom: 2rem;
+}
+.cart-container-detail-list-title h6{
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+}
+.cart-container-detail-list-bodyb{
+    color: rgb(122, 122, 122);
+    padding: 0rem;
+}
+.cart-container-detail-list-detailsb{
+    border-bottom: 1px dotted rgb(170, 170, 170);
+    font-size: 0.9rem;
+    padding: 0px 1rem;
+}
+
+.cart-container-detail-side-info{
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.cart-container-detail-list-totalb{
+    padding: 0px 1rem;
+}
+.d-flen{
+    display:flex ;
+    justify-content: space-between;
+}
+@media screen and (min-width:320px) and (max-width:768px) {
+    .formA{
+        height: 65%;
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sale-container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+    }  
+    .cart-container-detail-listb{
+        width:60%;
+    
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:598px) {
+
+    .formA{
+        height: 65%;
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }   
+}
+
+@media screen and (min-width:320px) and (max-width:424px) {
+
+    .formA{
+      flex-direction: column;
+      height: auto;
+    }
+    .form-container-side{
+        width: 100%;    
+    }
+    .form-container {
+        width: 100%;      
+    }
+    .d-flen{
+        flex-direction: column;
+    }
+    .d-flen p{
+        border-bottom: 1px dotted rgb(230, 230, 230);
+    }
+}

@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import { FaInfoCircle } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import FormConfimDataUser from "../sale/FormConfimDataUser";
 
 function MyVerticallyCenteredModal(props) {
+
+  const user = window.localStorage.getItem('user');
   return (
     <Modal
       {...props}
@@ -12,15 +15,15 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.title}
+          Confirma tus datos para el envio
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>
-          {
-            props.message
-          }
-        </p>
+        {
+          user
+            ? <FormConfimDataUser />
+            : <Link to="/auth/login"><Button>Login</Button></Link>
+        }
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
@@ -29,24 +32,21 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-export const ModalComponent = ({ title, message }) => {
+export const ModalConfirmUserData = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
       <Button
-        size="sm"
-        variant="link"
+        variant="success"
+        className='m-1'
         onClick={() => setModalShow(true)}
       >
-        <FaInfoCircle />
-        {title}
+        Terminar compra
       </Button>
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        message={message}
-        title={title}
       />
     </>
   );

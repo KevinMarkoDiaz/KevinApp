@@ -1,6 +1,10 @@
-.content-center{
+.content-center {
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container-item-list-banner {
+  flex-direction: column;
 }

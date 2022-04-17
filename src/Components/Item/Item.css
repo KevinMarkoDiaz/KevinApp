@@ -1,5 +1,10 @@
-.card-item{
-    width: 16rem;
+.card-item {
+    width: 14rem;
     margin: 1rem;
     padding: 0px;
+    transition: 200ms;
+}
+
+.card-item:hover {
+    transform: scale(1.1);
 }

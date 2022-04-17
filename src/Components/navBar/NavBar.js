@@ -1,10 +1,19 @@
-import React from 'react'
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import React, { useContext } from 'react'
+import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { context } from '../../Context/ContextProvider';
 import { CartWidget } from './CartWidget';
 import './NavBar.css'
 
 export const NavBar = () => {
+
+  const { handleAuth, auth } = useContext(context)
+
+  const handleLogOut = () => {
+    handleAuth(null)
+    window.localStorage.clear();
+  }
+
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -16,7 +25,6 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">
-              
               </Nav.Link>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item >
@@ -31,7 +39,14 @@ export const NavBar = () => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <CartWidget />
+          <div className='cart-btn-auth'>
+            <CartWidget />
+            {
+              auth
+                ? <Button to="/categories/cap" variant="danger" onClick={handleLogOut}>Log out</Button>
+                : <Link to="/auth/login" className='btn btn-primary'>Log in</Link>
+            }
+          </div>
         </Container>
       </Navbar>
     </>

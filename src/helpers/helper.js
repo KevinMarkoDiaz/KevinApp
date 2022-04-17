@@ -1,6 +1,6 @@
 export const handleRestTotal = (id, data, setState, state, setTotalUn, totalUn) => {
   const [deleteProduct] = data.filter(item => item.id === id);
-  const restTotal = deleteProduct.cant * deleteProduct.price;  
+  const restTotal = deleteProduct.cant * deleteProduct.price;
   setState(state - restTotal)
   setTotalUn(totalUn - deleteProduct.cant)
 };
@@ -10,7 +10,7 @@ export const handleNewStateCart = (id, data, setState) => {
   setState(newCartValue);
 };
 
-export const handleAddItemState = (id, item, addCant, cart, setTotal, total, setCart, isInCart, setTotalUn, totalUn) =>{
+export const handleAddItemState = (id, item, addCant, cart, setTotal, total, setCart, isInCart, setTotalUn, totalUn) => {
   const totalPrice = item.price * addCant
 
   if (isInCart(item)) {
@@ -24,31 +24,31 @@ export const handleAddItemState = (id, item, addCant, cart, setTotal, total, set
     setCart([...cart, item])
   }
   setTotal(total + totalPrice);
-  setTotalUn(totalUn + addCant );
+  setTotalUn(totalUn + addCant);
 }
 
-export const handleTotalShipping = (cant, shippingPrice)=>{
+export const handleTotalShipping = (cant, shippingPrice) => {
   if (cant <= 2) {
     return shippingPrice;
-  } else if(cant >= 3 && cant <=5) {
+  } else if (cant >= 3 && cant <= 5) {
     return shippingPrice / 2;
   } else {
     return 0
   }
 };
 
-export const handleDiscount = ( cant, total )=>{
+export const handleDiscount = (cant, total) => {
   if (cant <= 2) {
     return 0;
-  } else if(cant >= 3 && cant <=5) {
-    const totalDiscount = (total * 5) / 100 
+  } else if (cant >= 3 && cant <= 5) {
+    const totalDiscount = (total * 5) / 100
     return totalDiscount;
   } else {
-    const totalDiscount = (total * 10) / 100 
+    const totalDiscount = (total * 10) / 100
     return totalDiscount;
   }
 };
 
-export const handleTotalBill = (priceProducts, priceShipping, discount )=>{
+export const handleTotalBill = (priceProducts, priceShipping, discount) => {
   return (priceProducts + priceShipping) - discount;
 };

@@ -8,37 +8,42 @@ export const ContextProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0)
-  const [totalUn, setTotalUn] = useState(0) 
-  
-  const handleDeleteItem = (id) => {
-    handleNewStateCart(
-      id, 
-      cart, 
-      setCart
-      );
-    handleRestTotal(
-      id, 
-      cart, 
-      setTotal, 
-      total,
-      setTotalUn, 
-      totalUn
-      );
+  const [totalUn, setTotalUn] = useState(0)
+  const [auth, setAuth] = useState(null)
+
+  const handleAuth = (user) => {
+    setAuth(user)
   };
 
-  const handleAddItem = (id, item, addCant, ) => {
-    handleAddItemState(
-      id, 
-      item, 
-      addCant, 
-      cart, 
-      setTotal, 
-      total, 
-      setCart, 
-      isInCart, 
+  const handleDeleteItem = (id) => {
+    handleNewStateCart(
+      id,
+      cart,
+      setCart
+    );
+    handleRestTotal(
+      id,
+      cart,
+      setTotal,
+      total,
       setTotalUn,
-      totalUn     
-      );
+      totalUn
+    );
+  };
+
+  const handleAddItem = (id, item, addCant,) => {
+    handleAddItemState(
+      id,
+      item,
+      addCant,
+      cart,
+      setTotal,
+      total,
+      setCart,
+      isInCart,
+      setTotalUn,
+      totalUn
+    );
   };
 
   const handleClearCart = () => {
@@ -46,6 +51,7 @@ export const ContextProvider = ({ children }) => {
     setTotalUn(0)
     setTotal(0)
   };
+
 
   const isInCart = (item) => {
     const isInCartValue = cart.includes(item);
@@ -57,7 +63,9 @@ export const ContextProvider = ({ children }) => {
     handleAddItem: handleAddItem,
     handleDeleteItem: handleDeleteItem,
     handleClearCart: handleClearCart,
-    totalUn: totalUn
+    totalUn: totalUn,
+    auth: auth,
+    handleAuth: handleAuth
   };
 
   return (

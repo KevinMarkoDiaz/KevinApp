@@ -1,19 +1,28 @@
-.link-navbar{
+.link-navbar {
     text-decoration: none;
-    color: rgb(155, 155, 155);    
+    color: rgb(155, 155, 155);
 }
-.icon-size{
-    font-size :2rem;
+
+.icon-size {
+    font-size: 2rem;
 }
-.cart-widget-cant{
+
+.cart-widget-cant {
     color: #fff;
     font-weight: 700;
     background-color: rgb(255, 0, 0);
     width: 1.3rem;
     height: 1.3rem;
     display: flex;
-    justify-content:center ;
-    align-items: center;  
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     text-decoration: none;
+}
+
+.cart-btn-auth {
+    display: flex;
+    width: 10rem;
+    justify-content: space-between;
+    align-items: center;
 }

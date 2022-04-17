@@ -1,15 +1,22 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { FcAddRow } from 'react-icons/fc';
 import { context } from '../../Context/ContextProvider';
 import { CartdItem } from './CartdItem';
-import { handleDiscount, handleTotalBill, handleTotalShipping } from '../../helpers/helper';
-import { SHIPPING_PRICE, DISCOUNT_MESSAGE, SHIPPING_MESSAGE } from '../../config/config';
+import {
+  handleDiscount,
+  handleTotalBill,
+  handleTotalShipping
+} from '../../helpers/helper';
+import {
+  SHIPPING_PRICE,
+  DISCOUNT_MESSAGE,
+  SHIPPING_MESSAGE
+} from '../../config/config';
 import { ModalComponent } from '../modal/ModalComponent'
-import { FcAddRow } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { ModalConfirmUserData } from '../modal/ModalConfirmUserData';
 import './Cart.css';
-import { db } from '../../firebase/firebase';
 
 export const Cart = () => {
 
@@ -21,30 +28,10 @@ export const Cart = () => {
     totalUn
   } = useContext(context);
 
-  const handleBuy = async() => {
-
-    const orderDetails = {
-      buyer : {
-        name: "",
-        phoneNumber: "",
-        email: ""
-      },
-      items : cart,
-      date: serverTimestamp(),
-      total: total
-    }
-
-    const storeCollection = collection(db, "Orders");
-    const order = await addDoc(storeCollection, orderDetails)
-
-    console.log(order)
-
-  };
-
   const shipping = handleTotalShipping(totalUn, SHIPPING_PRICE);
   const discount = handleDiscount(totalUn, total);
   const totalBill = handleTotalBill(total, shipping, discount);
-  console.log(cart.length)
+
   return (
     <div className='p-3 cart-container '>
       <div className='cart-container-product-list '>
@@ -93,13 +80,7 @@ export const Cart = () => {
             </div>
           </div>
         </div>
-        <Button
-          className='m-1'
-          variant="success"
-          onClick={handleBuy}
-        >
-          Terminar compra
-        </Button>
+        <ModalConfirmUserData />
         <Button
           className='m-1'
           variant="danger"
