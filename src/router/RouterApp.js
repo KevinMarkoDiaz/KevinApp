@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import LoginForm from "../Components/auth/LoginForm";
 import RegisterForm from "../Components/auth/RegisterForm";
@@ -16,8 +15,6 @@ import { Sale } from "../Components/sale/Sale";
 
 export const RouterApp = () => {
 
-  const localUid = window.localStorage.getItem('user');
-
   return (
     <Router>
       <Routes>
@@ -27,7 +24,7 @@ export const RouterApp = () => {
         <Route path="/item/:itemId" element={<Layout children={<ItemDetailContainer />} />} />
         <Route path="/auth/register" element={<RegisterForm />} />
         <Route path="/auth/login" element={<LoginForm />} />
-        <Route path="/sale" element={(!localUid) ? <Navigate to="/" /> : <Sale />} />
+        <Route path="/sale" element={ <Sale /> } />
       </Routes>
     </Router>
   )

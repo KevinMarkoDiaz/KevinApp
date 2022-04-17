@@ -8,14 +8,14 @@ import { context } from '../../Context/ContextProvider';
 import "./Sale.css"
 
 const FormConfimDataUser = () => {
-  
+
   const history = useNavigate();
 
-  const {handleAuth, auth} = useContext(context)
+  const { handleAuth, auth } = useContext(context)
 
   const confirmDataUser = (values) => {
-    handleAuth(values)
     history("/sale");
+    handleAuth(values)
   };
 
   const formik = useFormik({

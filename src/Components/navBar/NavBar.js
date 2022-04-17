@@ -23,9 +23,7 @@ export const NavBar = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">
-              </Nav.Link>
+            <Nav className="me-auto">            
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item >
                   <Link to="/categories/items" className='link-navbar'>Articulos</Link>
